@@ -1,11 +1,13 @@
 from flask import Flask, send_from_directory, abort, render_template_string, request, redirect, url_for, flash
 import os
 from werkzeug.utils import secure_filename
-import subprocess
 
 app = Flask(__name__)
 app.secret_key = 'demir423'
-REPO_DIR = os.path.abspath("repo")
+
+# Yazılabilir geçici dizin
+REPO_DIR = "/tmp/repo"
+
 UPLOAD_PASSWORD = "pisipisi4525"
 HIDDEN_FILES = {"shell.php"}
 HIDDEN_EXTENSIONS = {".php"}
